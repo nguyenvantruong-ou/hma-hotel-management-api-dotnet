@@ -133,3 +133,4 @@ D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.API\obj\Debug\net6.0\
 D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.API\bin\Debug\net6.0\CloudinaryDotNet.dll
 D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.API\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

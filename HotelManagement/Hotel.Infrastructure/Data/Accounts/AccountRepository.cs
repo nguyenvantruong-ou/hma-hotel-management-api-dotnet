@@ -1,5 +1,6 @@
 ﻿using Hotel.Domain.Accounts.Entity;
 using Hotel.Domain.Accounts.Repository;
+using Microsoft.EntityFrameworkCore;
 using NET.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Hotel.Infrastructure.Data.Accounts
 
         }
 
-        public async Task AccountActivated(string Email)
+        public async Task AccountActivatedAsync(string Email)
         {
             var Acc = DbSet.FirstOrDefault(s => s.Email.Equals(Email));
             Acc.Status = true;
@@ -46,14 +47,21 @@ namespace Hotel.Infrastructure.Data.Accounts
                    select account;
         }
 
-        public async Task<bool> IsCardIdExist(string CardId)
+        public async Task<bool> IsCardIdExistAsync(string CardId)
         {
             return DbSet.FirstOrDefault(s => s.CardId == CardId) != null ? true : false;
         }
 
-        public async Task<bool> IsEmailExist(string Email)
+        public async Task<bool> IsEmailExistAsync(string Email)
         {
             return DbSet.FirstOrDefault(s => s.Email == Email) != null ? true : false;
+        }
+
+        public async Task<Account> SignInAsync(string Email, string Password)
+        {
+            var result = DbSet.Include(s=> s.Role).FirstOrDefault(s => s.Email.Equals(Email) && s.Password.Equals(Password) && s.Status == true);
+
+            return result;
         }
 
         public async Task UpdateEntityAsync(Account Req)

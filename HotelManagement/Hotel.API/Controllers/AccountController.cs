@@ -12,6 +12,7 @@ using NET.Domain;
 using System.Net;
 using Hotel.API.Utils;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hotel.API.Controllers
 {
@@ -40,13 +41,13 @@ namespace Hotel.API.Controllers
         }
 
         [HttpPost("auth/sign-up")]
-        public async Task<ActionResult> SignUpAsync([FromBody] AccountRequestDTO Req)
+        public async Task<ActionResult> SignUpAsync([FromForm] AccountRequestDTO Req)
         {
             try
             {
-                if (await _repo.IsCardIdExist(Req.CardId))
+                if (await _repo.IsCardIdExistAsync(Req.CardId))
                     return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, Message.CardIdExist));
-                if (await _repo.IsEmailExist(Req.Email))
+                if (await _repo.IsEmailExistAsync(Req.Email))
                     return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, Message.EmailExist));
 
                 // send mail
@@ -92,10 +93,10 @@ namespace Hotel.API.Controllers
                 int Code = int.Parse(TokenS.Claims.First(claim => claim.Type == ClaimTypesJwt.Code).Value);
                 if(Req.Code == Code)
                 {
-                    await _repo.AccountActivated(Req.Email);
+                    await _repo.AccountActivatedAsync(Req.Email);
                     await _repoToken.DeleteAsync(Req.Email);
                     _uow.CompleteAsync();
-                    return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.CodeCorrect));
+                    return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.CodeCorrect)); // 
                 }
                 return BadRequest(new CommonResponseDTO((int)HttpStatusCode.OK, null, Message.CodeIncorrect));
             } catch (Exception e)
@@ -104,12 +105,27 @@ namespace Hotel.API.Controllers
             }
         }
 
-        [HttpGet("accounts")]
-        public async Task<ActionResult> GetAccountsAsync([FromQuery] string Kw)
+ 
+        [HttpPost("auth/sign-in")]
+        public async Task<ActionResult> SignIn([FromBody] LoginRequestDTO Req )
         {
-            //return Ok(_configuration["Email:Username"]);
-            return Ok(_repo.GetEntityByName(Kw));
+            try
+            {
+                var result = await _repo.SignInAsync(Req.Email, MD5Util.GetMD5(Req.Password));
+
+                return Ok(result != null ? 
+                        new CommonResponseDTO((int)HttpStatusCode.OK, 
+                            new SignInResponseDTO(result.Email, result.LastName +" " + result.FirstName, result.Avatar, 
+                            JwtUtil.GetToken(_configuration, result)), 
+                        Message.Ok)
+                    : new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, Message.Incorrect));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, e.Message));
+            }
         }
+
 
         private Account ConvertAccount(AccountRequestDTO Req)
         {

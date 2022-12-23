@@ -10,8 +10,9 @@ namespace Hotel.Domain.Accounts.Repository
 {
     public interface IAccountRepository : IRepository<Account>
     {
-        Task<bool> IsEmailExist(string Email);
-        Task<bool> IsCardIdExist(string CardId);
-        Task AccountActivated(string Email);
+        Task<bool> IsEmailExistAsync(string Email);
+        Task<bool> IsCardIdExistAsync(string CardId);
+        Task AccountActivatedAsync(string Email);
+        Task<Account> SignInAsync(string Email, string Password);
     }
 }

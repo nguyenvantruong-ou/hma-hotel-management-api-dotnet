@@ -14,7 +14,7 @@ using Hotel.Domain.Accounts.Entity;
 
 public class JwtUtil
     {
-        public static string GetToken(IConfiguration Configuration, Account Req, int Code)
+        public static string GetToken(IConfiguration Configuration, Account Req)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -23,17 +23,12 @@ public class JwtUtil
                 Configuration["Jwt:Audience"],
                 new[]
                 {
-                        new Claim(ClaimTypesJwt.Code, Code.ToString()),
                         new Claim(ClaimTypes.NameIdentifier, Req.Email),
-                        new Claim(ClaimTypesJwt.Password, Req.Password),
                         new Claim(ClaimTypesJwt.LastName, Req.LastName),
                         new Claim(ClaimTypesJwt.FirstName, Req.FirstName),
-                        new Claim(ClaimTypesJwt.Gender, Req.Gender),
                         new Claim(ClaimTypesJwt.CardId, Req.CardId),
                         new Claim(ClaimTypesJwt.PhoneNumber, Req.PhoneNumber),
-                        new Claim(ClaimTypesJwt.Avatar, " set avatar"),
-                        new Claim(ClaimTypesJwt.Address, Req.Address),
-                        new Claim(ClaimTypes.Role, DTOs.Constant.Role.User)
+                        new Claim(ClaimTypes.Role, Req.Role.RoleName)
                 },
                 expires: DateTime.Now.AddDays(15),
                 signingCredentials: credentials

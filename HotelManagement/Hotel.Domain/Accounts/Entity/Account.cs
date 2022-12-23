@@ -1,6 +1,7 @@
 ﻿using Hotel.Domain.Models;
 using System;
 using System.Collections.Generic;
+using Hotel.Domain.Feedbacks.Entity;
 
 namespace Hotel.Domain.Accounts.Entity
 {

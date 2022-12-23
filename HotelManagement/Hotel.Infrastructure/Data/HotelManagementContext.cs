@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hotel.Domain.Accounts.Entity;
+using Hotel.Domain.Feedbacks.Entity;
 using Hotel.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;

@@ -1,11 +1,15 @@
 using Hotel.Domain.Accounts.Repository;
+using Hotel.Domain.Feedbacks.Repository;
 using Hotel.Infrastructure.Data;
 using Hotel.Infrastructure.Data.Accounts;
 using Hotel.Infrastructure.Utils;
 using Hotel.SharedKernel.Email;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NET.Domain;
 using NET.Infrastructure.Data;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +25,26 @@ builder.Services.AddDbContext<HotelManagementContext>(options => options.UseSqlS
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ITokenRegisterRepository, TokenRegisterRepository>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 builder.Services.AddScoped<IEmail, Email>();
 builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                builder.Configuration["Jwt:Key"]))
+        };
 
+    });
 
 var app = builder.Build();
 
@@ -37,7 +57,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.UseCors(x => x
              .SetIsOriginAllowed(_ => true)
@@ -45,6 +64,9 @@ app.UseCors(x => x
              .AllowAnyHeader()
              .AllowCredentials());
 
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllers();
 
