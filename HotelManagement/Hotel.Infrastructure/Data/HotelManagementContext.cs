@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Hotel.Domain.Accounts.Entity;
 using Hotel.Domain.Feedbacks.Entity;
 using Hotel.Domain.Models;
+using Hotel.Domain.Rooms.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -320,10 +321,6 @@ namespace Hotel.Infrastructure.Data
                     .HasColumnName("isPay")
                     .HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.Note)
-                    .HasMaxLength(300)
-                    .HasColumnName("note");
-
                 entity.Property(e => e.Status)
                     .HasColumnName("status")
                     .HasDefaultValueSql("((1))");
@@ -354,6 +351,8 @@ namespace Hotel.Infrastructure.Data
 
                 entity.Property(e => e.RoomId).HasColumnName("roomId");
 
+                entity.Property(e => e.Price).HasColumnName("price");
+
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderRooms)
                     .HasForeignKey(d => d.OrderId)
@@ -374,6 +373,8 @@ namespace Hotel.Infrastructure.Data
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
                 entity.Property(e => e.ServiceId).HasColumnName("serviceId");
+
+                entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderServices)

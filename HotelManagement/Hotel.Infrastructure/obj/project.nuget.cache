@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wL/g+fQtl2Lm8dDS+P3jKtQvCW2e+TZHmP+1xn7OI6PAQChpicw3LTUoHnGm23yiWAR7xbQZO3B/zZS86H+2IA==",
+  "dgSpecHash": "rA6IcalESCa9JiXDHXfF1G8YSza6cfJPK/nFkqIUypFcDRrJMgYs3RHFwuftA+C4t72Cq5/QRXLzpgm9wUos5w==",
   "success": true,
-  "projectFilePath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

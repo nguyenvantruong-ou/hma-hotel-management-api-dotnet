@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Hotel.Domain.Feedbacks.Entity;
+using Hotel.Domain.Rooms.Entity;
 
 namespace Hotel.Domain.Accounts.Entity
 {

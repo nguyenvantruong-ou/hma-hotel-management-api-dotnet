@@ -1870,11 +1870,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
       "projectName": "Hotel.Domain",
-      "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+      "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
       "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-      "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\obj\\",
+      "outputPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",

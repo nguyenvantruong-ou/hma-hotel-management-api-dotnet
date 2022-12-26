@@ -19,7 +19,6 @@ namespace Hotel.Domain.Models
         public bool? Status { get; set; }
         public bool? IsPay { get; set; }
         public DateTime? DateCreated { get; set; }
-        public string? Note { get; set; }
 
         public virtual Account? Account { get; set; }
         public virtual Capita? Capita { get; set; }

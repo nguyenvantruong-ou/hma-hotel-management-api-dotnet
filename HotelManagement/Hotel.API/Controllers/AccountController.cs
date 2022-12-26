@@ -13,6 +13,8 @@ using System.Net;
 using Hotel.API.Utils;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Hotel.API.Interfaces.Services;
+using Hotel.API.Interfaces.Utils;
 
 namespace Hotel.API.Controllers
 {
@@ -23,21 +25,25 @@ namespace Hotel.API.Controllers
         private readonly IUnitOfWork<HotelManagementContext> _uow;
         private IConfiguration _configuration;
         private IEmail _mailUtil;
-        private CloudinaryUtil _cloudinaryUtil;
+        private ICloudinary _cloudinaryUtil;
+        private IAccountService _service;
 
-        public AccountController(IAccountRepository repo, 
+        public AccountController(IAccountRepository Repo, 
                                 ITokenRegisterRepository repoToken,
-                                IUnitOfWork<HotelManagementContext> uow, 
+                                IUnitOfWork<HotelManagementContext> Uow, 
                                 IConfiguration Configuration,
-                                IEmail Email)
+                                IEmail Email,
+                                IAccountService Service,
+                                ICloudinary cloudinaryUtil)
         {
-            _repo = repo;
+            _repo = Repo;
             _repoToken = repoToken;
-            _uow = uow;
+            _uow = Uow;
             _configuration = Configuration;
             _mailUtil = Email;
             _mailUtil.ConfigMailAsync(_configuration);
-            _cloudinaryUtil = new CloudinaryUtil(_configuration);
+            _cloudinaryUtil = cloudinaryUtil;
+            _service = Service;
         }
 
         [HttpPost("auth/sign-up")]
@@ -59,7 +65,7 @@ namespace Hotel.API.Controllers
                 
                 Account Acc = new Account();
                 Req.Password = MD5Util.GetMD5(Req.Password);
-                Acc = ConvertAccount(Req);
+                Acc = _service.ConvertAccount(Req);
                 // upload image
                 if (Req.File != null)
                     Acc.Avatar = _cloudinaryUtil.UploadToCloudinary(Req.File);
@@ -85,7 +91,7 @@ namespace Hotel.API.Controllers
             {
                 var TokenRegister = await _repoToken.GetTokenAsync(Req.Email);
                 if (TokenRegister == null) 
-                    return BadRequest(new CommonResponseDTO((int)HttpStatusCode.OK, null, Message.CodeIncorrect));
+                    return BadRequest(new CommonResponseDTO((int)HttpStatusCode.OK, Message.CodeIncorrect));
 
                 var Handler = new JwtSecurityTokenHandler();
                 var TokenS = Handler.ReadToken(TokenRegister.Token) as JwtSecurityToken;
@@ -96,7 +102,7 @@ namespace Hotel.API.Controllers
                     await _repo.AccountActivatedAsync(Req.Email);
                     await _repoToken.DeleteAsync(Req.Email);
                     _uow.CompleteAsync();
-                    return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.CodeCorrect)); // 
+                    return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.CodeCorrect)); 
                 }
                 return BadRequest(new CommonResponseDTO((int)HttpStatusCode.OK, null, Message.CodeIncorrect));
             } catch (Exception e)
@@ -124,29 +130,6 @@ namespace Hotel.API.Controllers
             {
                 return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, e.Message));
             }
-        }
-
-
-        private Account ConvertAccount(AccountRequestDTO Req)
-        {
-            var Acc = new Account();
-            Acc.Email = Req.Email;
-            Acc.Password = Req.Password;
-            Acc.FirstName = Req.FirstName;
-            Acc.LastName = Req.LastName;   
-            Acc.Gender = GetGender(Req.Gender);
-            Acc.CardId = Req.CardId;
-            Acc.PhoneNumber = Req.PhoneNumber;
-            Acc.Address = Req.Address;
-
-            return Acc;
-        }
-
-        private string GetGender(int type)
-        {
-            if (type == 1)
-                return Gender.Male;
-            return type ==2 ? Gender.Female : Gender.Other;
         }
     }
 }

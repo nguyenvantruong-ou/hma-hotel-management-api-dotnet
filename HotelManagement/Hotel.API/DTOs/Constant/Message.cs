@@ -2,9 +2,11 @@
 {
     public class Message
     {
-        public const string Ok = "Thành công"; 
+        public const string Ok = "Thành công";
+        public const string NotExist = "Không tồn tại!";
         public const string EmailExist = "Email đã tồn tại! Vui lòng kiểm tra lại!";
         public const string CardIdExist = "CMND/CCCD đã tồn tại! Vui lòng kiểm tra lại!";
+        public const string NameExist = "Tên đã tồn tại! Vui lòng kiểm tra lại!";
         public const string Error = "Vui lòng kiểm tra lại!";
         public const string Incorrect = "Tên tài khoản hoặc mật khẩu không đúng!";
         public const string Email = "Mã xác nhận đã được gửi qua email";

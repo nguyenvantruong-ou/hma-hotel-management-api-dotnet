@@ -1,7 +1,15 @@
+using Hotel.API.Areas.Management.Interfaces;
+using Hotel.API.Areas.Management.Services;
+using Hotel.API.Interfaces.Services;
+using Hotel.API.Interfaces.Utils;
+using Hotel.API.Services;
+using Hotel.API.Utils;
 using Hotel.Domain.Accounts.Repository;
 using Hotel.Domain.Feedbacks.Repository;
+using Hotel.Domain.Rooms.Repository;
 using Hotel.Infrastructure.Data;
 using Hotel.Infrastructure.Data.Accounts;
+using Hotel.Infrastructure.Data.Rooms;
 using Hotel.Infrastructure.Utils;
 using Hotel.SharedKernel.Email;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -23,11 +31,23 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<HotelManagementContext>(options => options.UseSqlServer(builder.Configuration
     .GetConnectionString("WebApiDatabase")));
 
+// Utils
+builder.Services.AddScoped<IEmail, Email>();
+builder.Services.AddScoped<ICloudinary, CloudinaryUtil>();
+builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>)); 
+
+//
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IImageManagementRepository, ImageManagementRepository>();
+
 builder.Services.AddScoped<ITokenRegisterRepository, TokenRegisterRepository>();
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
-builder.Services.AddScoped<IEmail, Email>();
-builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+
+// Manage
+builder.Services.AddScoped<IRoomManagementRepository, RoomManagementRepository>();
+builder.Services.AddScoped<IRoomManagementService, RoomManagementService>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

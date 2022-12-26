@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {}
+    "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {}
   },
   "projects": {
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {
+    "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
+        "projectUniqueName": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
         "projectName": "Hotel.API",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
+        "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
         "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\obj\\",
+        "outputPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,14 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
+              "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
+                "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
               },
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj"
+              "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj"
               },
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
+              "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
               }
             }
           }
@@ -61,6 +61,10 @@
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
               "version": "[6.25.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.11, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -93,14 +97,14 @@
         }
       }
     },
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
+    "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
         "projectName": "Hotel.Domain",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+        "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
         "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\obj\\",
+        "outputPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -163,14 +167,14 @@
         }
       }
     },
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
+    "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
         "projectName": "Hotel.Infrastructure",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -187,11 +191,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
+              "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
+                "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
               },
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
+              "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
               }
             }
           }
@@ -236,14 +240,14 @@
         }
       }
     },
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+    "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
+        "projectUniqueName": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
         "projectName": "Hotel.SharedKernel",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
+        "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
         "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\obj\\",
+        "outputPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",

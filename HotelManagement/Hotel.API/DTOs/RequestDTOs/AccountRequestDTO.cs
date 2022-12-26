@@ -5,7 +5,6 @@ namespace Hotel.API.DTOs.RequestDTOs
 {
     public class AccountRequestDTO
     {
-        [ValidateNever]
         public IFormFile File { get; set; }
         [Required]
         public string Email { get; set; }
