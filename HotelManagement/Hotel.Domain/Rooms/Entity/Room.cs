@@ -1,4 +1,4 @@
-﻿using Hotel.Domain.Models;
+﻿using Hotel.Domain.Orders.Entities;
 using System;
 using System.Collections.Generic;
 

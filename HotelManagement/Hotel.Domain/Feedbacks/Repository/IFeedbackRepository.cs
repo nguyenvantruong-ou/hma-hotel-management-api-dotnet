@@ -1,5 +1,5 @@
 ﻿using Hotel.Domain.Feedbacks.Entity;
-using NET.Domain.Interfaces;
+using Hotel.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

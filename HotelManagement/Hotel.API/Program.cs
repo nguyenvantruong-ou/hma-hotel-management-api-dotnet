@@ -1,23 +1,34 @@
-using Hotel.API.Areas.Management.Interfaces;
 using Hotel.API.Areas.Management.Services;
-using Hotel.API.Interfaces.Services;
-using Hotel.API.Interfaces.Utils;
-using Hotel.API.Services;
+using Hotel.API.Areas.Management.Services.Interfaces;
+using Hotel.API.DomainServices;
 using Hotel.API.Utils;
-using Hotel.Domain.Accounts.Repository;
-using Hotel.Domain.Feedbacks.Repository;
-using Hotel.Domain.Rooms.Repository;
+using Hotel.Domain.Accounts.Repositories;
+using Hotel.Domain.Feedbacks.Repositories;
+using Hotel.Domain.Rooms.Repositories;
+using Hotel.Domain.Services.Repositories;
 using Hotel.Infrastructure.Data;
 using Hotel.Infrastructure.Data.Accounts;
 using Hotel.Infrastructure.Data.Rooms;
+using Hotel.Infrastructure.Data.Services;
 using Hotel.Infrastructure.Utils;
 using Hotel.SharedKernel.Email;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using NET.Domain;
-using NET.Infrastructure.Data;
+using Hotel.Domain;
 using System.Text;
+using Hotel.Domain.Accounts.DomainServices.Interfaces;
+using Hotel.Domain.Accounts.DomainServices;
+using Hotel.API.Utils.Interfaces;
+using Hotel.Domain.Statistics;
+using Hotel.Infrastructure.Data.Statistics;
+using Hotel.Domain.Rooms.DomainServices.Interfaces;
+using Hotel.Domain.Rooms.DomainServices;
+using Hotel.Domain.Orders.Repositories;
+using Hotel.Infrastructure.Data.Orders;
+using Hotel.Domain.Orders.DomainServices.Interfaces;
+using Hotel.Domain.Orders.DomainServices;
+using Hotel.SharedKernel.SMS;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,20 +44,58 @@ builder.Services.AddDbContext<HotelManagementContext>(options => options.UseSqlS
 
 // Utils
 builder.Services.AddScoped<IEmail, Email>();
-builder.Services.AddScoped<ICloudinary, CloudinaryUtil>();
-builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>)); 
+builder.Services.AddScoped<UploadImage, CloudinaryUtil>();
+builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+builder.Services.AddScoped<ISendSMSService, SendSMSService>();
+builder.Services.AddScoped<ISMS, SMS>();
 
-//
+// Account
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IConvertToAccountService, ConvertToAccountService>();
+builder.Services.AddScoped<ISendCodeService, SendCodeService>();
 builder.Services.AddScoped<IImageManagementRepository, ImageManagementRepository>();
-
 builder.Services.AddScoped<ITokenRegisterRepository, TokenRegisterRepository>();
+
+// Service
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+
+
+// Room
+builder.Services.AddScoped<IReadRoomService, ReadRoomService>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IReadCommentService, ReadCommentService>();
+builder.Services.AddScoped<ICreateCommentService, CreateCommentService>();
+
+
+// Feedback
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+
+// Order
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRoomRepository, OrderRoomRepository>();
+builder.Services.AddScoped<IOrderServiceRepository, OrderServiceRepository>();
+builder.Services.AddScoped<ICoefficientRepository, CoefficientRepository>();
+builder.Services.AddScoped<ICapitaRepository, CapitaRepository>();
+builder.Services.AddScoped<IHistoryService, HistoryService>();
+builder.Services.AddScoped<IBillRepository, BillRepository>();
+builder.Services.AddScoped<IBillService, BillService>();
+
 
 // Manage
 builder.Services.AddScoped<IRoomManagementRepository, RoomManagementRepository>();
 builder.Services.AddScoped<IRoomManagementService, RoomManagementService>();
+builder.Services.AddScoped<IServiceManagementRepository, ServiceManagementRepository>();
+builder.Services.AddScoped<IAccountManagementRepository, AccountManagementRepository>();
+builder.Services.AddScoped<IAccountManagementService, AccountManagementService>();
+builder.Services.AddScoped<IStaffManagementRepository, StaffManagementRepository>();
+builder.Services.AddScoped<IStaffTypeManagementRepository, StaffTypeManagementRepository>();
+builder.Services.AddScoped<IStatisticsService, StatisticsService>();
+builder.Services.AddScoped<IStatisticalRoomRepository, StatisticalRoomRepository>(); 
+builder.Services.AddScoped<IStatisticalServiceRepository, StatisticalServiceRepository>(); 
+builder.Services.AddScoped<IStatisticalOrderRepository, StatisticalOrderRepository>(); 
+
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

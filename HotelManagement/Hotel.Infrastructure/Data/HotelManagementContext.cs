@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hotel.Domain.Accounts.Entity;
-using Hotel.Domain.Feedbacks.Entity;
-using Hotel.Domain.Models;
-using Hotel.Domain.Rooms.Entity;
+using Hotel.Domain.Accounts.Entities;
+using Hotel.Domain.Feedbacks.Entities;
+using Hotel.Domain.Orders.Entities;
+using Hotel.Domain.Rooms.Entities;
+using Hotel.Domain.Services.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -34,7 +35,7 @@ namespace Hotel.Infrastructure.Data
         public virtual DbSet<Room> Rooms { get; set; } = null!;
         public virtual DbSet<Service> Services { get; set; } = null!;
         public virtual DbSet<StaffType> StaffTypes { get; set; } = null!;
-        public virtual DbSet<staff> staff { get; set; } = null!;
+        public virtual DbSet<Staff> staff { get; set; } = null!;
         public virtual DbSet<TokenRegister> TokenRegisters { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -151,7 +152,7 @@ namespace Hotel.Infrastructure.Data
 
             modelBuilder.Entity<Bill>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.ToTable("Bill");
 
@@ -317,6 +318,14 @@ namespace Hotel.Infrastructure.Data
                     .HasColumnName("dateCreated")
                     .HasDefaultValueSql("(getdate())");
 
+                entity.Property(e => e.StartDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("startDate");
+
+                entity.Property(e => e.EndDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("endDate");
+
                 entity.Property(e => e.IsPay)
                     .HasColumnName("isPay")
                     .HasDefaultValueSql("((0))");
@@ -461,6 +470,10 @@ namespace Hotel.Infrastructure.Data
                 entity.Property(e => e.Status)
                     .HasColumnName("status")
                     .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.Image)
+                    .HasMaxLength(300)
+                    .HasColumnName("image");
             });
 
             modelBuilder.Entity<StaffType>(entity =>
@@ -478,9 +491,9 @@ namespace Hotel.Infrastructure.Data
                     .HasColumnName("type");
             });
 
-            modelBuilder.Entity<staff>(entity =>
+            modelBuilder.Entity<Staff>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.ToTable("Staff");
 
@@ -501,7 +514,7 @@ namespace Hotel.Infrastructure.Data
 
                 entity.HasOne(d => d.IdNavigation)
                     .WithOne()
-                    .HasForeignKey<staff>(d => d.Id)
+                    .HasForeignKey<Staff>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Staff__id__6477ECF3");
 

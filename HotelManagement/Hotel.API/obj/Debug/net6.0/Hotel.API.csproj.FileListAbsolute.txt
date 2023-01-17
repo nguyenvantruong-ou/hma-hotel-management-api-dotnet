@@ -544,3 +544,4 @@ C:\Users\truong.nguyenvan\Desktop\HotelManagement\HotelManagement\Hotel.API\bin\
 C:\Users\truong.nguyenvan\Desktop\HotelManagement\HotelManagement\Hotel.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\truong.nguyenvan\Desktop\HotelManagement\HotelManagement\Hotel.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\truong.nguyenvan\Desktop\HotelManagement\HotelManagement\Hotel.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.API\bin\Debug\net6.0\Twilio.dll

@@ -1,10 +1,10 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
-using Hotel.API.Interfaces.Utils;
+using Hotel.API.Utils.Interfaces;
 
 namespace Hotel.API.Utils
 {
-    public class CloudinaryUtil : ICloudinary
+    public class CloudinaryUtil : UploadImage
     {
         private Cloudinary Cloudinary { get; set; }
         public string CloudName { get; set; }

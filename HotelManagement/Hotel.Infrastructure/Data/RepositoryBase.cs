@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NET.Infrastructure.Data
+namespace Hotel.Infrastructure.Data
 {
     public abstract class RepositoryBase<TEntity> where TEntity : class
     {

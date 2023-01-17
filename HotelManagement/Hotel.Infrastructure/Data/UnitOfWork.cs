@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NET.Domain;
+using Hotel.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NET.Infrastructure.Data
+namespace Hotel.Infrastructure.Data
 {
     public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext
     {

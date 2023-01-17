@@ -26,3 +26,6 @@ D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\obj\Debug\net6
 D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\obj\Debug\net6.0\Hotel.Domain.pdb
 D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\obj\Debug\net6.0\Hotel.Domain.genruntimeconfig.cache
 D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\obj\Debug\net6.0\ref\Hotel.Domain.dll
+D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\bin\Debug\net6.0\Hotel.SharedKernel.dll
+D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\bin\Debug\net6.0\Hotel.SharedKernel.pdb
+D:\Orient\HotelManagement_API_Truong\HotelManagement\Hotel.Domain\obj\Debug\net6.0\Hotel.Domain.csproj.CopyComplete

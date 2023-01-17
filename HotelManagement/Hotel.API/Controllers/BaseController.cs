@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using NET.Domain;
+using Hotel.Domain;
 
-namespace NET.API.Controllers
+namespace Hotel.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

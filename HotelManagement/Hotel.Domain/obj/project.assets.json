@@ -634,6 +634,19 @@
             "rid": "win"
           }
         }
+      },
+      "Hotel.SharedKernel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hotel.SharedKernel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hotel.SharedKernel.dll": {}
+        }
       }
     }
   },
@@ -1855,10 +1868,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Hotel.SharedKernel/1.0.0": {
+      "type": "project",
+      "path": "../Hotel.SharedKernel/Hotel.SharedKernel.csproj",
+      "msbuildProject": "../Hotel.SharedKernel/Hotel.SharedKernel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Hotel.SharedKernel >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.10"
@@ -1870,11 +1889,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+      "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
       "projectName": "Hotel.Domain",
-      "projectPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+      "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
       "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.Domain\\obj\\",
+      "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1890,7 +1909,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+              "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

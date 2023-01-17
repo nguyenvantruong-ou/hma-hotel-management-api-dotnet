@@ -1,5 +1,5 @@
 ﻿using Hotel.API.Areas.Management.DTOs.RequestDTO;
-using Hotel.Domain.Rooms.Entity;
+using Hotel.Domain.Rooms.Entities;
 
 namespace Hotel.API.Areas.Management.Interfaces
 {

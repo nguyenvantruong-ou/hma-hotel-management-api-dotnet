@@ -13,5 +13,6 @@ namespace Hotel.API.Areas.Management.DTOs.RequestDTO
         public string Acreage { get; set; } = null!;
         [ValidateNever]
         public List<IFormFile> ListImage { get; set; }
+        public bool Status { get; set; }
     }
 }

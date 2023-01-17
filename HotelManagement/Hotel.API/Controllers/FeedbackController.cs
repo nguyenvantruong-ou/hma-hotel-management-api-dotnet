@@ -1,12 +1,12 @@
 ﻿using Hotel.API.DTOs.RequestDTOs;
 using Hotel.API.Utils;
-using Hotel.Domain.Feedbacks.Entity;
-using Hotel.Domain.Feedbacks.Repository;
+using Hotel.Domain.Feedbacks.Entities;
+using Hotel.Domain.Feedbacks.Repositories;
 using Hotel.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NET.API.Controllers;
-using NET.Domain;
+using Hotel.API.Controllers;
+using Hotel.Domain;
 using static System.Net.WebRequestMethods;
 
 namespace Hotel.API.Controllers
@@ -15,16 +15,16 @@ namespace Hotel.API.Controllers
     {
         private IFeedbackRepository _repo;
         private readonly IUnitOfWork<HotelManagementContext> _uow;
-        public FeedbackController(IFeedbackRepository Repo, 
+        public FeedbackController(IFeedbackRepository repo, 
                                   IUnitOfWork<HotelManagementContext> uow)
         {
-            this._repo = Repo;
+            _repo = repo;
             _uow = uow;
         }
 
         [HttpPost]
         [Authorize(Roles = "USER")]
-        public async Task<ActionResult> AddFeedback([FromBody] FeedbackCreateRequestDTO Req)
+        public async Task<ActionResult> AddFeedback([FromBody] FeedbackCreateRequestDTO req)
         {
 
             //var Input = new Feedback();

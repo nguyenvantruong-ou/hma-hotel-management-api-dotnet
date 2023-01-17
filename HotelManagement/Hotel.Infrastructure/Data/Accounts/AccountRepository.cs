@@ -1,7 +1,7 @@
-﻿using Hotel.Domain.Accounts.Entity;
-using Hotel.Domain.Accounts.Repository;
+﻿using Hotel.Domain.Accounts.Entities;
+using Hotel.Domain.Accounts.Repositories;
 using Microsoft.EntityFrameworkCore;
-using NET.Infrastructure.Data;
+using Hotel.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,67 +17,73 @@ namespace Hotel.Infrastructure.Data.Accounts
 
         }
 
-        public async Task AccountActivatedAsync(string Email)
+        public async Task AccountActivatedAsync(string email)
         {
-            var Acc = DbSet.FirstOrDefault(s => s.Email.Equals(Email));
+            var Acc = DbSet.FirstOrDefault(s => s.Email.Equals(email));
             Acc.Status = true;
         }
 
-        public async Task AddEntityAsync(Account Entity)
+        public async Task AddEntityAsync(Account entity)
         {
-            DbSet.Add(Entity);
+            DbSet.Add(entity);
         }
 
-        public async Task DeleteEntityAsync(int Id)
+        public async Task DeleteEntityAsync(int id)
         {
-            var Acc = DbSet.FirstOrDefault(s => s.Id == Id);
+            var Acc = DbSet.FirstOrDefault(s => s.Id == id);
             Acc.Status = false;
 
         }
 
-        public Task<Account> GetEntityByIDAsync(int Id)
+        public Task<Account> GetEntityByIDAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Account> GetEntityByName(string Name)
+        public IQueryable<Account> GetEntityByName(string name)
         {
             return from account in DbSet
-                   where string.IsNullOrEmpty(Name) || account.Email.Contains(Name) 
+                   where string.IsNullOrEmpty(name) || account.Email.Contains(name) 
                    select account;
         }
 
-        public async Task<bool> IsCardIdExistAsync(string CardId)
+        public async Task<bool> IsCardIdExistAsync(string cardId)
         {
-            return DbSet.FirstOrDefault(s => s.CardId == CardId) != null ? true : false;
+            return DbSet.FirstOrDefault(s => s.CardId == cardId) != null ? true : false;
         }
 
-        public async Task<bool> IsEmailExistAsync(string Email)
+        public async Task<bool> IsEmailExistAsync(string email)
         {
-            return DbSet.FirstOrDefault(s => s.Email == Email) != null ? true : false;
+            return DbSet.FirstOrDefault(s => s.Email == email) != null ? true : false;
         }
 
-        public async Task<Account> SignInAsync(string Email, string Password)
+        public async Task<Account> SignInAsync(string email, string password)
         {
-            var result = DbSet.Include(s=> s.Role).FirstOrDefault(s => s.Email.Equals(Email) && s.Password.Equals(Password) && s.Status == true);
+            var result = DbSet.Include(s=> s.Role).FirstOrDefault(s => s.Email.Equals(email) && s.Password.Equals(password) && s.Status == true);
 
             return result;
         }
 
-        public async Task UpdateEntityAsync(Account Req)
+        public async Task UpdateEntityAsync(Account req)
         {
-            var Acc = DbSet.FirstOrDefault(s => s.Id == Req.Id);
-            Acc.Email = Req.Email;
-            Acc.Password = Req.Password;
-            Acc.FirstName = Req.FirstName;
-            Acc.LastName = Req.LastName;
-            Acc.Role = Req.Role;
-            Acc.Gender = Req.Gender;
-            if (Req.Avatar.Length > 0)
-                Acc.Avatar = Req.Avatar;
-            Acc.CardId = Req.CardId;
-            Acc.PhoneNumber = Req.PhoneNumber;
-            Acc.Address = Req.Address;
+            var Acc = DbSet.FirstOrDefault(s => s.Id == req.Id);
+            Acc.Email = req.Email;
+            Acc.Password = req.Password;
+            Acc.FirstName = req.FirstName;
+            Acc.LastName = req.LastName;
+            Acc.Role = req.Role;
+            Acc.Gender = req.Gender;
+            if (req.Avatar.Length > 0)
+                Acc.Avatar = req.Avatar;
+            Acc.CardId = req.CardId;
+            Acc.PhoneNumber = req.PhoneNumber;
+            Acc.Address = req.Address;
+        }
+
+        public async Task UpdatePasswordAsync(string email, string password)
+        {
+            var Acc = DbSet.FirstOrDefault(s => s.Email.Equals(email));
+            Acc.Password = password;
         }
     }
 }

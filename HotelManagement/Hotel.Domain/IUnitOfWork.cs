@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NET.Domain
+namespace Hotel.Domain
 {
     public interface IUnitOfWork<TContext> 
     {

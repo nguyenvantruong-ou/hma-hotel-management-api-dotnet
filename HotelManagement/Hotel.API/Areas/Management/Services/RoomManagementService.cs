@@ -1,30 +1,31 @@
 ﻿using Hotel.API.Areas.Management.DTOs.RequestDTO;
-using Hotel.API.Areas.Management.Interfaces;
-using Hotel.API.Interfaces.Utils;
-using Hotel.Domain.Rooms.Entity;
-using Hotel.Domain.Rooms.Repository;
+using Hotel.API.Areas.Management.Services.Interfaces;
+using Hotel.API.Utils.Interfaces;
+using Hotel.Domain.Rooms.Entities;
+using Hotel.Domain.Rooms.Repositories;
 
 namespace Hotel.API.Areas.Management.Services
 {
     public class RoomManagementService : IRoomManagementService
     {
         private readonly IRoomManagementRepository _repo;
-        private ICloudinary _cloudinary;
-        public RoomManagementService(ICloudinary cloudinaryUtil,
+        private UploadImage _cloudinary;
+        public RoomManagementService(UploadImage cloudinaryUtil,
                                      IRoomManagementRepository Repo)
         {
             this._cloudinary = cloudinaryUtil;    
             _repo = Repo;   
         }
 
-        public async Task<Room> ConvertToRoomAsync(RoomRequestDTO Input)
+        public async Task<Room> ConvertToRoomAsync(RoomRequestDTO input)
         {
             Room Result = new Room();
-            Result.RoomName = Input.RoomName;
-            Result.Price = Input.Price;
-            Result.Description = Input.Description;
-            Result.BedType = Input.BedType;
-            Result.Acreage = Input.Acreage;
+            Result.RoomName = input.RoomName;
+            Result.Price = input.Price;
+            Result.Description = input.Description;
+            Result.BedType = input.BedType;
+            Result.Acreage = input.Acreage;
+            Result.Status = input.Status;
             return Result;
         }
 

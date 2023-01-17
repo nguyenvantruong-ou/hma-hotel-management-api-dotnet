@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ju+svEMjMgV+fi8j6zPWo8fDfcGLGS0jWB1BBSWgQ5I1sFBcJiqzYW0xiDiKbUzF/kBjOr/shPtohEpb1bdZ8Q==",
+  "dgSpecHash": "dvVy/eEsTLh625DV2VA2HQvzWx/RkxPjH80GKwxIPAvhVroIeZNW/ZlSeTnwyufzmi6RmHl3iM1PvJPTwW8DYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\truong.nguyenvan\\Desktop\\HotelManagement\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
+  "projectFilePath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",

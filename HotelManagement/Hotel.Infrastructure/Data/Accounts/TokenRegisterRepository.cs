@@ -1,6 +1,6 @@
-﻿using Hotel.Domain.Accounts.Entity;
-using Hotel.Domain.Accounts.Repository;
-using NET.Infrastructure.Data;
+﻿using Hotel.Domain.Accounts.Entities;
+using Hotel.Domain.Accounts.Repositories;
+using Hotel.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,45 +16,45 @@ namespace Hotel.Infrastructure.Data.Accounts
 
         }
 
-        public async Task AddEntityAsync(TokenRegister Entity)
+        public async Task AddEntityAsync(TokenRegister entity)
         {
-            var Token = DbSet.FirstOrDefault(s => s.Email == Entity.Email);
+            var Token = DbSet.FirstOrDefault(s => s.Email == entity.Email);
             if (Token == null)
-                DbSet.Add(Entity);
+                DbSet.Add(entity);
             else
             {
-                Token.Token = Entity.Token;
+                Token.Token = entity.Token;
                 Token.Status = true;
             }
         }
 
-        public async Task DeleteAsync(string Email)
+        public async Task DeleteAsync(string email)
         {
-            var Token =  DbSet.FirstOrDefault(e => e.Email == Email);
+            var Token =  DbSet.FirstOrDefault(e => e.Email == email);
             Token.Status = false;
         }
 
-        public Task DeleteEntityAsync(int Id)
+        public Task DeleteEntityAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TokenRegister> GetEntityByIDAsync(int Id)
+        public Task<TokenRegister> GetEntityByIDAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<TokenRegister> GetEntityByName(string Name)
+        public IQueryable<TokenRegister> GetEntityByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<TokenRegister> GetTokenAsync(string Email)
+        public async Task<TokenRegister> GetTokenAsync(string email)
         {
-            return DbSet.FirstOrDefault(s => s.Email.Equals(Email));
+            return DbSet.FirstOrDefault(s => s.Email.Equals(email));
         }
 
-        public Task UpdateEntityAsync(TokenRegister Req)
+        public Task UpdateEntityAsync(TokenRegister req)
         {
             throw new NotImplementedException();
         }

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NET.Domain.Interfaces
+namespace Hotel.Domain.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetEntityByIDAsync(int Id);
-        IQueryable<TEntity> GetEntityByName(string Name);
-        Task AddEntityAsync(TEntity Entity);
-        Task UpdateEntityAsync(TEntity Req);
-        Task DeleteEntityAsync(int Id);
+        Task<TEntity> GetEntityByIDAsync(int id);
+        IQueryable<TEntity> GetEntityByName(string name);
+        Task AddEntityAsync(TEntity entity);
+        Task UpdateEntityAsync(TEntity req);
+        Task DeleteEntityAsync(int id);
     }
 }
