@@ -19,5 +19,20 @@ namespace Hotel.API.Areas.Management.DTOs.ResponseDTO
         public decimal Salary { get; set; } = 0;
         public string TypeStaff { get; set; } = null!;
         public int? StatusStaff { get; set; }
+
+        public AccountReadResponseDTO() { }
+        public AccountReadResponseDTO(Account account) {
+            Id = account.Id;
+            Email = account.Email;
+            FirstName = account.FirstName;
+            LastName = account.LastName;
+            Role = account.Role.RoleName;
+            Gender = account.Gender;
+            CardId = account.CardId;
+            PhoneNumber = account.PhoneNumber;
+            Address = account.Address;
+            Status = account.Status;
+            DateCreated = account.DateCreated;
+        }
     }
 }

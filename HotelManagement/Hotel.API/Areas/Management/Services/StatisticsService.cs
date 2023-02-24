@@ -1,5 +1,6 @@
 ﻿using Hotel.API.Areas.Management.DTOs.ResponseDTO;
 using Hotel.API.Areas.Management.Services.Interfaces;
+using Hotel.Domain.Rooms.Repositories;
 using Hotel.Domain.Statistics;
 using Hotel.Infrastructure.Data.Statistics;
 
@@ -10,15 +11,18 @@ namespace Hotel.API.Areas.Management.Services
         private IStatisticalRoomRepository _repoRoom;
         private IStatisticalServiceRepository _repoService;
         private IStatisticalOrderRepository _repOrder;
+        private IRoomRepository _repoR;
         private int _maximumPeople = 5;
 
         public StatisticsService(IStatisticalRoomRepository repoRoom,
                                 IStatisticalServiceRepository repoService,
-                                IStatisticalOrderRepository repOrder)
+                                IStatisticalOrderRepository repOrder,
+                                IRoomRepository repoR)
         {
             _repoRoom = repoRoom;
             _repoService = repoService;
             _repOrder = repOrder;
+            _repoR = repoR;
         }
 
         public async Task<StatisticalRevenueResponseDTO> StatiscalRevenueAsync(int year)
@@ -58,6 +62,21 @@ namespace Hotel.API.Areas.Management.Services
                 Results.Add(Result);
             }
             return Results;
+        }
+
+        public async Task<List<StatisticRevenuePerRoomsResponseDTO>> StatisticalRevenuePerRoomsAsync(DateTime fromDate, DateTime toDate)
+        {
+            if (toDate < fromDate)
+                throw new ArgumentOutOfRangeException("Bad Request");
+            var results = _repoR.GetEntityByName("")
+                .Select(s => new {
+                    RoomId = s.Id,
+                    RoomName = s.RoomName,
+                    TotalMoney = s.OrderRooms.Where(or=>or.Order.DateCreated > fromDate && or.Order.DateCreated < toDate)
+                    .Sum(s =>  s.Price)
+                }).ToList();
+
+            return results.Select(_ => new StatisticRevenuePerRoomsResponseDTO(_.RoomId, _.RoomName, _.TotalMoney)).ToList();
         }
     }
 }

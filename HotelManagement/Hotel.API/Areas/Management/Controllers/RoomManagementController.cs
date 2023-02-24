@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Hotel.API.Controllers;
 using Hotel.Domain;
 using System.Net;
+using Hotel.API.Areas.Management.DTOs.ResponseDTO;
 
 namespace Hotel.API.Areas.Management.Controllers
 {
@@ -37,7 +38,8 @@ namespace Hotel.API.Areas.Management.Controllers
             {
                 var results = _repo.GetRooms(req.Kw, req.Sort);
                 return Ok(new CommonResponseDTO((int)HttpStatusCode.OK,
-                    results.Skip(req.PageSize * (req.Page - 1)).Take(req.PageSize).ToList(),
+                    results.Skip(req.PageSize * (req.Page - 1)).Take(req.PageSize).ToList()
+                    .Select(_ => new RoomManagementResponseDTO(_)),
                     Message.Ok));
             }
             catch (Exception e)

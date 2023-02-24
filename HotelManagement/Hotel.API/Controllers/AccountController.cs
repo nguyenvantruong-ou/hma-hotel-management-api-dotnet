@@ -15,6 +15,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Hotel.Domain.Accounts.DomainServices.Interfaces;
 using Hotel.API.Utils.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hotel.API.Controllers
 {
@@ -27,6 +28,7 @@ namespace Hotel.API.Controllers
         private ISendCodeService _sendCode;
         private UploadImage _cloudinaryUtil;
         private IConvertToAccountService _service;
+        private IConvertToAccountService _serviceConvertToAccount;
 
         public AccountController(IAccountRepository repo, 
                                 ITokenRegisterRepository repoToken,
@@ -34,7 +36,8 @@ namespace Hotel.API.Controllers
                                 IConfiguration configuration,
                                 ISendCodeService sendCode,
                                 IConvertToAccountService service,
-                                UploadImage cloudinaryUtil)
+                                UploadImage cloudinaryUtil,
+                                IConvertToAccountService serviceConvert)
         {
             _repo = repo;
             _repoToken = repoToken;
@@ -43,6 +46,7 @@ namespace Hotel.API.Controllers
             _cloudinaryUtil = cloudinaryUtil;
             _sendCode = sendCode;
             _service = service;
+            _serviceConvertToAccount = serviceConvert;
         }
 
         [HttpPost("auth/sign-up")]
@@ -120,10 +124,46 @@ namespace Hotel.API.Controllers
 
                 return Ok(result != null ? 
                         new CommonResponseDTO((int)HttpStatusCode.OK, 
-                            new SignInResponseDTO(result.Id, result.Email, result.LastName +" " + result.FirstName, result.Avatar, result.Role.RoleName,
-                                                  JwtUtil.GetToken(_configuration, result)), 
+                            new SignInResponseDTO(result.Id, result.Email, result.LastName + " " + result.FirstName, result.Avatar, result.Role.RoleName,
+                                                  JwtUtil.GetToken(_configuration, result, int.Parse( _configuration["Jwt:ExpirationAccessToken"])), 
+                                                  JwtUtil.GetToken(_configuration, result, int.Parse( _configuration["Jwt:ExpirationRefreshToken"])), 
+                                                  (result.Password == MD5Util.GetMD5("000000") ? false : true)), 
+
                         Message.Ok)
                     : new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, Message.Incorrect));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, e.Message));
+            }
+        }
+
+        [HttpPost("auth/sign-in/social")]
+        public async Task<ActionResult> SignInBySocialLogin([FromBody] SocialLoginRequestDTO req)
+        {
+            try
+            {
+                var acc = await _repo.SignInAsync(req.Email, MD5Util.GetMD5(req.Password));
+                //
+                if (acc == null)
+                {
+                    var account = _serviceConvertToAccount.ConvertAccount(req.Email, MD5Util.GetMD5(req.Password), 
+                                                                          req.FirstName, req.LastName, 1, req.CardId, req.PhoneNumber, null);
+                    account.Gender = null;
+                    account.RoleId = 3;
+                    account.Avatar = req.Avartar;
+                    
+                    await _repo.AddEntityAsync(account);
+                    await _uow.CompleteAsync();
+                }
+
+                var result =  _repo.GetEntityByName(req.Email).Include(s => s.Role).FirstOrDefault();
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK,
+                            new SignInResponseDTO(result.Id, result.Email, result.LastName + " " + result.FirstName, null, result.Role.RoleName,
+                                                  JwtUtil.GetToken(_configuration, result, int.Parse(_configuration["Jwt:ExpirationAccessToken"])),
+                                                  JwtUtil.GetToken(_configuration, result, int.Parse(_configuration["Jwt:ExpirationRefreshToken"])),
+                                                  (result.Password == MD5Util.GetMD5("000000") ? false : true)),
+                        Message.Ok));
             }
             catch (Exception e)
             {
@@ -165,6 +205,43 @@ namespace Hotel.API.Controllers
             } catch (Exception e)
             {
                 return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, e.Message));
+            }
+        }
+
+        [HttpPost("auth/password-update")]
+        public async Task<ActionResult> SetUpdatePassword([FromBody] NewPasswordRequestDTO req)
+        {
+            try
+            {
+                await _repo.UpdatePasswordAsync(req.Email, MD5Util.GetMD5(req.Password));
+                await _uow.CompleteAsync();
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.SuccessPassword));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, e.Message));
+            }
+        }
+
+        [Authorize(Roles = "ADMIN, STAFF, USER")]
+        [HttpGet("auth/refresh-token")]
+        public async Task<ActionResult> RefreshToken()
+        {
+            try
+            {
+                ClaimsIdentity Identity = HttpContext.User.Identity as ClaimsIdentity;
+                string email = Identity.Claims.FirstOrDefault(e => e.Type == ClaimTypes.NameIdentifier)?.Value!;
+                string role = Identity.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Role)?.Value!;
+                var acc = _repo.GetEntityByName(email).Include(s => s.Role).FirstOrDefault();
+                acc.Role.RoleName = role;
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK,
+                                                new TokenResponseDTO(JwtUtil.GetToken(_configuration, acc, int.Parse(_configuration["Jwt:ExpirationAccessToken"])),
+                                                                     JwtUtil.GetToken(_configuration, acc, int.Parse(_configuration["Jwt:ExpirationRefreshToken"]))),
+                                                Message.Ok));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.InternalServerError, null, e.Message));
             }
         }
     }

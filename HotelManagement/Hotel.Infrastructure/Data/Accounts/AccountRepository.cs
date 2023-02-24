@@ -23,9 +23,10 @@ namespace Hotel.Infrastructure.Data.Accounts
             Acc.Status = true;
         }
 
-        public async Task AddEntityAsync(Account entity)
+        public Task AddEntityAsync(Account entity)
         {
             DbSet.Add(entity);
+            return Task.CompletedTask;
         }
 
         public async Task DeleteEntityAsync(int id)

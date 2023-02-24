@@ -16,6 +16,7 @@ namespace Hotel.API.DTOs.ResponseDTOs
             TypeBed = room.BedType;
             Acreage = room.Acreage;
             Slug = room.Slug;
+            Description = room.Description;
         }
 
         public int RoomId { get; set; }
@@ -25,5 +26,6 @@ namespace Hotel.API.DTOs.ResponseDTOs
         public string TypeBed { get; set; }
         public string Acreage { get; set; }
         public string Slug { get; set; }
+        public string? Description { get; set; }
     }
 }

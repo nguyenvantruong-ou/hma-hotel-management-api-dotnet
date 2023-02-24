@@ -29,6 +29,9 @@ using Hotel.Infrastructure.Data.Orders;
 using Hotel.Domain.Orders.DomainServices.Interfaces;
 using Hotel.Domain.Orders.DomainServices;
 using Hotel.SharedKernel.SMS;
+using Hotel.Infrastructure.Data.Feedbacks;
+using Hotel.Domain.Feedbacks.DomainServices.Interfaces;
+using Hotel.Domain.Feedbacks.DomainServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,10 +69,25 @@ builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IReadCommentService, ReadCommentService>();
 builder.Services.AddScoped<ICreateCommentService, CreateCommentService>();
+builder.Services.AddScoped<IDeleteCommentService, DeleteCommentService>();
+builder.Services.AddScoped<IUpdateCommentService, UpdateCommentService>();
 
 
 // Feedback
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+
+// Order
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRoomRepository, OrderRoomRepository>();
+builder.Services.AddScoped<IOrderServiceRepository, OrderServiceRepository>();
+builder.Services.AddScoped<ICoefficientRepository, CoefficientRepository>();
+builder.Services.AddScoped<ICapitaRepository, CapitaRepository>();
+builder.Services.AddScoped<IHistoryService, HistoryService>();
+builder.Services.AddScoped<IBillRepository, BillRepository>();
+builder.Services.AddScoped<IBillService, BillService>();
+
 
 // Order
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -118,7 +136,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 {
     app.UseSwagger();
     app.UseSwaggerUI();

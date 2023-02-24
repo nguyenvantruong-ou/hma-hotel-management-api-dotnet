@@ -15,13 +15,19 @@ namespace Hotel.API.Controllers
         private ICreateCommentService _serviceCreateComment; 
         private IReadCommentService _serviceReadComment;
         private readonly IUnitOfWork<HotelManagementContext> _uow;
+        private IDeleteCommentService _serviceDeleteComment;
+        private IUpdateCommentService _serviceUpdateComment;
         public CommentController(ICreateCommentService serviceCreateComment,
                                  IReadCommentService serviceReadComment,
-                                 IUnitOfWork<HotelManagementContext> uow)
+                                 IUnitOfWork<HotelManagementContext> uow,
+                                 IDeleteCommentService serviceDeleteComment,
+                                 IUpdateCommentService serviceUpdateComment)
         {
             _serviceCreateComment = serviceCreateComment;
             _serviceReadComment = serviceReadComment;
             _uow = uow;
+            _serviceDeleteComment = serviceDeleteComment;
+            _serviceUpdateComment = serviceUpdateComment;
         }
 
         [HttpGet("comments")]
@@ -68,6 +74,39 @@ namespace Hotel.API.Controllers
             try
             {
                 await _serviceCreateComment.CreateCommentAsync(req.AccountId, req.RoomId, req.Content, req.Incognito, req.ParentId);
+                await _uow.CompleteAsync();
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.Ok));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, Message.Error, e.Message));
+            }
+        }
+
+        [Authorize(Roles = "USER")]
+        [HttpDelete("comment/{id}")]
+        public async Task<ActionResult> DeleteComment(int id)
+        {
+            try
+            {
+                await _serviceDeleteComment.DeleteCommentAsync(id);
+                await _uow.CompleteAsync();
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.Ok));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, Message.Error, e.Message));
+            }
+        }
+
+        [Authorize(Roles = "USER")]
+        [HttpPut("comment")]
+        public async Task<ActionResult> UpdateComment([FromBody] CommentUpdateRequestDTO req)
+        {
+            try
+            {
+                //this.HttpContext.User.FindFirst("sub").Value;
+                await _serviceUpdateComment.UpdateCommentAsync(req.Id, req.Content, req.Incognito);
                 await _uow.CompleteAsync();
                 return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, Message.Ok));
             }

@@ -5,18 +5,21 @@ namespace Hotel.API.DTOs.ResponseDTOs
     public class CommentInfoResponseDTO
     {
         public int Id { get; set; }
+        public int? UserId { get; set; }
         public string Username { get; set; }
         public string Avatar { get; set; }
         public string Content { get; set; } = null!;
         public DateTime? DateCreated { get; set; }
+        public bool? Incognito { get; set; }
         public int? ParentId { get; set; }
 
         public CommentInfoResponseDTO(Comment comment)
         {
             Id = comment.Id;
-            Avatar = comment.Account.Avatar;
+            UserId = comment.AccountId;
             Content = comment.Content;
             DateCreated = comment.DateCreated;
+            Incognito = comment.Incognito;
             ParentId = comment.ParentId;
             if (comment.Incognito == true)
             {

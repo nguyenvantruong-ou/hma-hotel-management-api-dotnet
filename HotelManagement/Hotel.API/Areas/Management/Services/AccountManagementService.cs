@@ -34,7 +34,11 @@ namespace Hotel.API.Areas.Management.Services
             Result.PhoneNumber = Acc.PhoneNumber;
             Result.Address = Acc.Address;
             Result.Status = Acc.Status;
-            Result.Avatar = Acc.Avatar;
+            if (!String.IsNullOrEmpty(Acc.Avatar))
+                Result.Avatar = Acc.Avatar;
+            else
+                Result.Avatar = "https://res.cloudinary.com/dykzla512/image/upload/v1672894851/HotelManagement/ng8l2mgr4xaykbzxwtby.jpg";
+
             if (Acc.RoleId == 2)
             {
                 var Staff = await _repoStaff.GetEntityByIDAsync(id);
@@ -48,24 +52,9 @@ namespace Hotel.API.Areas.Management.Services
         public async Task<List<AccountReadResponseDTO>> ReadAccountAsync(SearchRequestDTO req)
         {
             var ListAccount = _repo.GetEntityByName(req.Kw).Skip(req.PageSize * (req.Page - 1)).Take(req.PageSize).ToList();
-            List<AccountReadResponseDTO> Results = new List<AccountReadResponseDTO>();
-            ListAccount.ForEach(async s =>
-            {
-                AccountReadResponseDTO r = new AccountReadResponseDTO();
-                r.Id = s.Id;
-                r.Email = s.Email;
-                r.FirstName = s.FirstName;
-                r.LastName = s.LastName;
-                r.Role = s.Role.RoleName;
-                r.Gender = s.Gender;
-                r.CardId = s.CardId;
-                r.PhoneNumber = s.PhoneNumber;
-                r.Address = s.Address;
-                r.Status = s.Status;
-                r.DateCreated = s.DateCreated;
-                Results.Add(r);
-            });
-            return Results;
+            List<AccountReadResponseDTO> results = new List<AccountReadResponseDTO>();
+            ListAccount.ForEach(_ => results.Add( new AccountReadResponseDTO(_)));
+            return results;
         }
         public Account ConvertAccount(int id, string email, string firstName, string lastName,
                                 int gender, string cardId, string phoneNumber, string address, bool status, bool resetPw)
@@ -108,7 +97,8 @@ namespace Hotel.API.Areas.Management.Services
             Input.LastName = acc.LastName;
             Input.CardId = acc.CardId;
             Input.PhoneNumber = acc.PhoneNumber;
-            Input.Password = MD5Util.GetMD5("1");
+            Input.Password = MD5Util.GetMD5("000000");
+
             Input.Address = acc.Address;
             if (acc.Salary > 0)
                 Input.RoleId = 2;
@@ -148,6 +138,6 @@ namespace Hotel.API.Areas.Management.Services
         {
             var results = await _repo.GetAccountsActiveAsync(email);
             return results;
-        }
+        }        
     }
 }

@@ -21,9 +21,10 @@ namespace Hotel.Infrastructure.Data.Rooms
             DbSet.Add(entity);
         }
 
-        public Task DeleteEntityAsync(int id)
+        public async Task DeleteEntityAsync(int id)
         {
-            throw new NotImplementedException();
+            var comment = DbSet.FirstOrDefault(s => s.Id == id);
+            DbSet.Remove(comment!);
         }
 
         public Task<int> GetAmountCommentedAsync(int roomId, int userId)
@@ -34,7 +35,8 @@ namespace Hotel.Infrastructure.Data.Rooms
 
         public Task<Comment> GetEntityByIDAsync(int id)
         {
-            throw new NotImplementedException();
+            var comment = DbSet.FirstOrDefault(s => s.Id == id);
+            return Task.FromResult(comment!);
         }
 
         public IQueryable<Comment> GetEntityByName(string name)

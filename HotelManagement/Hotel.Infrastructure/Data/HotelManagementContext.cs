@@ -272,6 +272,9 @@ namespace Hotel.Infrastructure.Data
                     .HasColumnName("isRead")
                     .HasDefaultValueSql("((1))");
 
+                entity.Property(e => e.Rating)
+                    .HasColumnName("rating");
+
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Feedbacks)
                     .HasForeignKey(d => d.AccountId)
@@ -320,14 +323,14 @@ namespace Hotel.Infrastructure.Data
 
                 entity.Property(e => e.StartDate)
                     .HasColumnType("datetime")
-                    .HasColumnName("startDate");
+                    .HasColumnName("CheckIn");
 
                 entity.Property(e => e.EndDate)
                     .HasColumnType("datetime")
-                    .HasColumnName("endDate");
+                    .HasColumnName("CheckOut");
 
                 entity.Property(e => e.IsPay)
-                    .HasColumnName("isPay")
+                    .HasColumnName("isPaied")
                     .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.Status)
