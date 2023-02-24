@@ -69,6 +69,21 @@ namespace Hotel.API.Areas.Management.Controllers
                 return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, Message.Error, e.Message));
             }
         }
+        //[Authorize(Roles = "ADMIN")]
+        [HttpGet("revenue-per-rooms")]
+        public async Task<ActionResult> StatisticPerRooms([FromQuery] DateRequestDTO req)
+        {
+            try
+            {
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK,
+                                                await _service.StatisticalRevenuePerRoomsAsync(req.FromDate, req.ToDate),
+                                                Message.Ok));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new CommonResponseDTO((int)HttpStatusCode.BadRequest, null, Message.Error, e.Message));
+            }
+        }
     }
 
 }

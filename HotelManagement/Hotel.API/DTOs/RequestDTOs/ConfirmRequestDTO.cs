@@ -6,6 +6,7 @@ namespace Hotel.API.DTOs.RequestDTOs
     {
         [Required]
         public int Code { get; set; }
+        [EmailAddress]
         public string Email { get; set; }
     }
 }

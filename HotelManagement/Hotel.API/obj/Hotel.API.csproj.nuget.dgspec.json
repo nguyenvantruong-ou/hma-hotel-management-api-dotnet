@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {}
   },
   "projects": {
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.API\\Hotel.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
         "projectName": "Hotel.API",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
-        "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.API\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.API\\Hotel.API.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,14 +31,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
+              "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
               },
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj"
+              "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj"
               },
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
+              "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
               }
             }
           }
@@ -81,7 +84,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -93,21 +97,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
         "projectName": "Hotel.Domain",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
-        "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -121,8 +128,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
+              "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
               }
             }
           }
@@ -158,7 +165,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -167,21 +175,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
         "projectName": "Hotel.Infrastructure",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -195,11 +206,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
+              "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.Domain\\Hotel.Domain.csproj"
               },
-              "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
-                "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
+              "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj"
               }
             }
           }
@@ -235,7 +246,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -244,21 +256,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
         "projectName": "Hotel.SharedKernel",
-        "projectPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
-        "packagesPath": "C:\\Users\\truong.nguyenvan\\.nuget\\packages\\",
-        "outputPath": "D:\\Orient\\HotelManagement_API_Truong\\HotelManagement\\Hotel.SharedKernel\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\Hotel.SharedKernel.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Orient\\hma-hotel-management-api-dotnet\\HotelManagement\\Hotel.SharedKernel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\truong.nguyenvan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -295,7 +310,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -304,7 +320,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

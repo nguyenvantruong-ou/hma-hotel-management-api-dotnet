@@ -14,42 +14,41 @@ using Hotel.Domain.Accounts.Entities;
 
 public class JwtUtil
     {
-        public static string GetToken(IConfiguration Configuration, Account Req)
+        public static string GetToken(IConfiguration configuration, Account req, int expirationDate)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
-                Configuration["Jwt:Issuer"],
-                Configuration["Jwt:Audience"],
+                configuration["Jwt:Issuer"],
+                configuration["Jwt:Audience"],
                 new[]
                 {
-                        new Claim(ClaimTypes.NameIdentifier, Req.Email),
-                        new Claim(ClaimTypesJwt.LastName, Req.LastName),
-                        new Claim(ClaimTypesJwt.FirstName, Req.FirstName),
-                        new Claim(ClaimTypesJwt.CardId, Req.CardId),
-                        new Claim(ClaimTypesJwt.PhoneNumber, Req.PhoneNumber),
-                        new Claim(ClaimTypes.Role, Req.Role.RoleName)
+                    new Claim(ClaimTypes.NameIdentifier, req.Email),
+                    new Claim(ClaimTypesJwt.LastName, req.LastName),
+                    new Claim(ClaimTypesJwt.FirstName, req.FirstName),
+                    new Claim(ClaimTypes.Role, req.Role.RoleName)
                 },
-                expires: DateTime.Now.AddDays(15),
+                expires: DateTime.Now.AddHours(expirationDate),
+                //expires : DateTime.Now.AddSeconds(expirationDate),
                 signingCredentials: credentials
              );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public static string GetTokenRegister(IConfiguration Configuration, int Code, string Email)
+        public static string GetTokenRegister(IConfiguration configuration, int code, string email)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
-                Configuration["Jwt:Issuer"],
-                Configuration["Jwt:Audience"],
+                configuration["Jwt:Issuer"],
+                configuration["Jwt:Audience"],
                 new[]
                 {
-                            new Claim(ClaimTypesJwt.Code, Code.ToString()),
-                            new Claim(ClaimTypes.Email, Email)
+                    new Claim(ClaimTypesJwt.Code, code.ToString()),
+                    new Claim(ClaimTypes.Email, email)
                 },
-                expires: DateTime.Now.AddDays(15),
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials: credentials
              );
 

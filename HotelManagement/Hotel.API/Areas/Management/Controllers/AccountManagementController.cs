@@ -17,6 +17,7 @@ using Hotel.Domain;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
+using Hotel.SharedKernel.Email;
 
 namespace Hotel.API.Areas.Management.Controllers
 {
@@ -28,13 +29,17 @@ namespace Hotel.API.Areas.Management.Controllers
         private IStaffManagementRepository _repoStaff;
         private UploadImage _cloudinaryUtil;
         private IStaffTypeManagementRepository _repoStaffType;
+        private IEmail _emailUtil;
+        private IConfiguration _configuration;
 
         public AccountManagementController(IAccountManagementRepository repo,
                                            IAccountManagementService service,
                                            IUnitOfWork<HotelManagementContext> uow,
                                            IStaffManagementRepository repoStaff,
                                            UploadImage cloudinaryUtil,
-                                           IStaffTypeManagementRepository repoStaffType)
+                                           IStaffTypeManagementRepository repoStaffType,
+                                           IEmail email,
+                                           IConfiguration configuration)
         {
             _repo = repo;
             _service = service;
@@ -42,6 +47,8 @@ namespace Hotel.API.Areas.Management.Controllers
             _repoStaff = repoStaff;
             _cloudinaryUtil = cloudinaryUtil;
             _repoStaffType = repoStaffType;
+            _emailUtil = email;
+            _configuration = configuration;
         }
 
         [Authorize(Roles = "ADMIN")]
@@ -96,7 +103,11 @@ namespace Hotel.API.Areas.Management.Controllers
                     await _service.CreateStaffAsync(await _repo.GetIdByEmailAsync(req.Email), (int)req.TypeStaff, (decimal)req.Salary);
                     await _uow.CompleteAsync();
                 }
-                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, null, Message.Ok));
+                var a = _configuration["Hotel:Name"];
+                await _emailUtil.ConfigMailAsync(_configuration);
+                _emailUtil.SendAsync(req.Email, _configuration["Hotel:Name"], _configuration["Email:Content2"]);
+                return Ok(new CommonResponseDTO((int)HttpStatusCode.OK, await _repo.GetIdByEmailAsync(req.Email), Message.Ok));
+
             }
             catch (Exception e)
             {

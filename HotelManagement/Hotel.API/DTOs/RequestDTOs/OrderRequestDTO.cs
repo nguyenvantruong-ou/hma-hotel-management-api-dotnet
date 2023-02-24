@@ -1,9 +1,13 @@
-﻿namespace Hotel.API.DTOs.RequestDTOs
+using Hotel.API.DTOs.RequestDTOs.CustomValidationAttribute;
+
+namespace Hotel.API.DTOs.RequestDTOs
 {
     public class OrderRequestDTO
     {
         // order
+        [IdValidationAttribute]
         public int AccountId { get; set; }
+        [IdValidationAttribute]
         public int CapitaId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

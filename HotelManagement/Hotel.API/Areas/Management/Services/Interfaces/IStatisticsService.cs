@@ -7,5 +7,6 @@ namespace Hotel.API.Areas.Management.Services.Interfaces
         Task<StatisticalRevenueResponseDTO> StatiscalRevenueAsync(int year);
         Task<List<int>> StatisticalVisitorAsync();
         Task<List<StatisticalAmountPeopleResponseDTO>> StatisticalAmountCustomerAsync();
+        Task<List<StatisticRevenuePerRoomsResponseDTO>> StatisticalRevenuePerRoomsAsync(DateTime fromDate, DateTime toDate);
     }
 }

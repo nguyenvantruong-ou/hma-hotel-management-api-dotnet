@@ -9,17 +9,17 @@ namespace Hotel.API.DomainServices
         public Account ConvertAccount(string email, string password, string firstName, string lastName, 
                                         int gender, string cardId, string phoneNumber, string address)
         {
-            var Acc = new Account();
-            Acc.Email = email;
-            Acc.Password = password;
-            Acc.FirstName = firstName;
-            Acc.LastName = lastName;
-            Acc.Gender = GetGender(gender);
-            Acc.CardId = cardId;
-            Acc.PhoneNumber = phoneNumber;
-            Acc.Address = address;
+            var acc = new Account();
+            acc.Email = email;
+            acc.Password = password;
+            acc.FirstName = firstName;
+            acc.LastName = lastName;
+            acc.Gender = GetGender(gender);
+            acc.CardId = cardId;
+            acc.PhoneNumber = phoneNumber;
+            acc.Address = address;
 
-            return Acc;
+            return acc;
         }
 
         public string GetGender(int type)

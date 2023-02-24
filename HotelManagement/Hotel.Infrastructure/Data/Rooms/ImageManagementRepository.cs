@@ -22,10 +22,7 @@ namespace Hotel.Infrastructure.Data.Rooms
             throw new NotImplementedException();
         }
 
-        public Task AddEntityAsync(Domain.Rooms.Entity.Image entity)
-        {
-            throw new NotImplementedException();
-        }
+  
 
         public async Task AddListImageAsync(List<string> listImage, int roomId)
         {
@@ -68,11 +65,5 @@ namespace Hotel.Infrastructure.Data.Rooms
         {
             throw new NotImplementedException();
         }
-
-        public Task UpdateEntityAsync(Domain.Rooms.Entity.Image req)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

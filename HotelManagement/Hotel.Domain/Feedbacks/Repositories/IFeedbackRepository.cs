@@ -11,5 +11,8 @@ namespace Hotel.Domain.Feedbacks.Repositories
     public interface IFeedbackRepository : IRepository<Feedback>
     {
         Task<List<Feedback>> GetListFeedbackAsync(int Id);
+        Task<int> CountUnreadFeedbackAsync();
+        IQueryable<Feedback> GetGeneralFeedbacks();
+        IQueryable<Feedback> GetFeedbacks(int userId);
     }
 }

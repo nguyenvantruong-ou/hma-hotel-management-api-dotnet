@@ -11,7 +11,7 @@ namespace Hotel.Domain.Feedbacks.Entities
         public string? Content { get; set; }
         public DateTime? DateCreated { get; set; }
         public bool? IsRead { get; set; }
-
+        public int? Rating { get; set; }
         public virtual Account? Account { get; set; }
     }
 }
